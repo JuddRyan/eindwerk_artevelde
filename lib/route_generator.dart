@@ -1,3 +1,4 @@
+import 'package:eindwerk_lite/arguments.dart';
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
 import 'package:eindwerk_lite/screens/home_screen.dart';
 import 'package:eindwerk_lite/screens/login_screen.dart';
@@ -21,8 +22,18 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const RegisterScreen());
       case '/profile':
         return MaterialPageRoute(builder: (context) => const ProfileScreen());
+
       case '/workout':
-        return MaterialPageRoute(builder: (context) => const WorkoutScreen());
+        return MaterialPageRoute(
+          builder: (context) {
+            WorkoutArguments arguments = args as WorkoutArguments;
+            return WorkoutScreen(
+              title: arguments.workoutTitle,
+              description: arguments.workoutDescription,
+              image: arguments.workoutImage,
+            );
+          },
+        );
       // case '/profile':
       //   return MaterialPageRoute(
       //     builder: (context) => SecondPage(

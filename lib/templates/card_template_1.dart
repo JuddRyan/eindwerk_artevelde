@@ -64,9 +64,7 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onTap == null
-            ? const Text('No Function passed')
-            : const Text('Function passed');
+        onTap == null ? const Text('No Function passed') : const Text('Function passed');
       },
       child: Container(
         child: child,

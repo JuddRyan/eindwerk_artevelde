@@ -8,9 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final String tEmail = 'E-mail',
-      tPassword = 'Password',
-      tAccount = 'Don\'t have an account yet?';
+  String tEmail = 'E-mail', tPassword = 'Password', tAccount = 'Don\'t have an account yet?';
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +46,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(tPassword),
                   const TextField(
                     obscureText: true,
-                    obscuringCharacter: '§',
                   ),
                 ],
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/register', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, '/register', (route) => false);
                 },
                 child: const Text('Don\'t have an acount yet?'),
               ),
@@ -64,10 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.pushNamed(context, '/');
-                  // Navigator.popAndPushNamed(context, '/');
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/home', (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                 },
                 child: const Text('Sign In'),
               )

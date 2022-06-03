@@ -1,24 +1,36 @@
+import 'package:eindwerk_lite/arguments.dart';
 import 'package:flutter/material.dart';
 
-class CustomCard extends StatelessWidget {
-  const CustomCard({
+class SimpleCard extends StatelessWidget {
+  const SimpleCard({
     Key? key,
-    this.onTap,
-    @required this.image,
     @required this.title,
+    @required this.image,
     @required this.description,
+    this.route,
+    this.onTap,
   }) : super(key: key);
 
   final Function? onTap;
   final String? image, title, description;
+  final String? route;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        onTap == null
-            ? const Text('No Function passed')
-            : const Text('Function passed');
+        //lower case in case of typo's
+        if (route != null) {
+          Navigator.pushNamed(
+            context,
+            route.toString().toLowerCase(),
+            arguments: WorkoutArguments(
+              "Hangboard Training",
+              "This guide will go over de basics of hangboarding",
+              "https://www.trainingbeta.com/wp-content/uploads/2016/01/hangboard1.jpg",
+            ),
+          );
+        }
       },
       child: Container(
         child: Column(
