@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -8,9 +9,30 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final String tEmail = 'E-mail',
-      tPassword = 'Password',
-      tAccount = 'Already have an account?';
+  final String tEmail = 'E-mail', tPassword = 'Password', tAccount = 'Already have an account?';
+
+  // Input field controllers
+  // These controllers will keep track of the users input
+  // _variables are private variables
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future register() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
+  }
+
+  @override
+  void dispose() {
+    // After signing in the controllers won't be needed anymore
+    // disposing them will help free up memory for the app
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +58,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(tEmail),
-                  const TextField(),
+                  TextField(
+                    controller: _emailController,
+                  ),
                 ],
               ),
               const SizedBox(
@@ -46,7 +70,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(tPassword),
-                  const TextField(),
+                  TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                  ),
                 ],
               ),
               TextButton(
@@ -57,12 +84,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 height: 40,
               ),
               ElevatedButton(
-                onPressed: () {
-                  // Navigator.pushNamed(context, '/');
-                  // Navigator.popAndPushNamed(context, '/');
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/', (route) => false);
-                },
+                onPressed: register,
+                // onPressed: () {
+                //   // Navigator.pushNamed(context, '/');
+                //   // Navigator.popAndPushNamed(context, '/');
+                //   Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+                // },
                 child: const Text('Register'),
               )
             ],

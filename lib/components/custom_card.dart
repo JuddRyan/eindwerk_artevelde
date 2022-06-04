@@ -25,9 +25,9 @@ class SimpleCard extends StatelessWidget {
             context,
             route.toString().toLowerCase(),
             arguments: WorkoutArguments(
-              "Hangboard Training",
-              "This guide will go over de basics of hangboarding",
-              "https://www.trainingbeta.com/wp-content/uploads/2016/01/hangboard1.jpg",
+              title.toString(),
+              description.toString(),
+              image.toString(),
             ),
           );
         }

@@ -58,7 +58,8 @@ class ListRowItems extends StatelessWidget {
               width: 16,
             ),
             Expanded(
-              child: CardTemplate1(
+              child: SimpleCard(
+                route: '/workout',
                 title: 'Improve your crimps',
                 description: "Specific training to help holding crimps",
                 image: 'https://pulseclimbing.com.au/wp-content/uploads/2016/05/HAND.jpg',

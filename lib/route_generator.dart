@@ -1,4 +1,5 @@
 import 'package:eindwerk_lite/arguments.dart';
+import 'package:eindwerk_lite/check_autherisation.dart';
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
 import 'package:eindwerk_lite/screens/home_screen.dart';
 import 'package:eindwerk_lite/screens/login_screen.dart';
@@ -14,7 +15,7 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/':
+      case '/login':
         return MaterialPageRoute(builder: (context) => const LoginScreen());
       case '/home':
         return MaterialPageRoute(builder: (context) => const HomePage());
@@ -22,7 +23,6 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const RegisterScreen());
       case '/profile':
         return MaterialPageRoute(builder: (context) => const ProfileScreen());
-
       case '/workout':
         return MaterialPageRoute(
           builder: (context) {
@@ -34,12 +34,8 @@ class RouteGenerator {
             );
           },
         );
-      // case '/profile':
-      //   return MaterialPageRoute(
-      //     builder: (context) => SecondPage(
-      //       title: args.toString(),
-      //     ),
-      //   );
+      case '/':
+        return MaterialPageRoute(builder: (context) => const CheckAutherisation());
       default:
         return _errorRoute();
     }

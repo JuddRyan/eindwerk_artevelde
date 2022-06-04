@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "793542773597",
+    "project_id": "eindwerk-artevelde",
+    "storage_bucket": "eindwerk-artevelde.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793542773597:android:04e9fc318e5e68b6c576b4",
+        "android_client_info": {
+          "package_name": "com.example.eindwerk_lite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793542773597-90h3olf2h4dpfspsq7roqbc4dqdnr947.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE6Nf9pxInXGssnKRy5W0OFfEq3HXaCog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793542773597-90h3olf2h4dpfspsq7roqbc4dqdnr947.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "793542773597-n8sgeemb9f6ovgg3c5cc1ndpce1su30t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.eindwerkLite"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

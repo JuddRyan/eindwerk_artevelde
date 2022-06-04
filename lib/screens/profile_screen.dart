@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 int age = 35;
@@ -113,6 +114,13 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+                },
+                child: Text('Sign Out'),
               ),
               Expanded(
                 child: Container(
