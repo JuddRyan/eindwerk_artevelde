@@ -1,6 +1,7 @@
 import 'package:eindwerk_lite/arguments.dart';
 import 'package:eindwerk_lite/check_autherisation.dart';
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
+import 'package:eindwerk_lite/screens/forgot_screen.dart';
 import 'package:eindwerk_lite/screens/home_screen.dart';
 import 'package:eindwerk_lite/screens/login_screen.dart';
 import 'package:eindwerk_lite/screens/register_screen.dart';
@@ -36,6 +37,8 @@ class RouteGenerator {
         );
       case '/':
         return MaterialPageRoute(builder: (context) => const CheckAutherisation());
+      case '/forgot':
+        return MaterialPageRoute(builder: (context) => const ForgotPasswordScreen());
       default:
         return _errorRoute();
     }

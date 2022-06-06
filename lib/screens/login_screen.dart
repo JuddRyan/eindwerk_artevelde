@@ -81,17 +81,23 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, '/forgot');
+                },
+                child: const Text('Forgot password?'),
+              ),
+              // const SizedBox(
+              //   height: 40,
+              // ),
+              ElevatedButton(
+                onPressed: signIn,
+                child: const Text('Sign In'),
+              ),
+              TextButton(
+                onPressed: () {
                   Navigator.pushNamedAndRemoveUntil(context, '/register', (route) => false);
                 },
                 child: const Text('Don\'t have an acount yet?'),
               ),
-              const SizedBox(
-                height: 40,
-              ),
-              ElevatedButton(
-                onPressed: signIn,
-                child: const Text('Sign In'),
-              )
             ],
           ),
         ),
