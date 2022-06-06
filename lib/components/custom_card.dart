@@ -9,11 +9,13 @@ class SimpleCard extends StatelessWidget {
     @required this.description,
     this.route,
     this.onTap,
+    this.margin,
   }) : super(key: key);
 
   final Function? onTap;
   final String? image, title, description;
   final String? route;
+  final double? margin;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class SimpleCard extends StatelessWidget {
         }
       },
       child: Container(
+        margin: EdgeInsets.all((margin ?? 0)),
         child: Column(
           children: [
             Container(
