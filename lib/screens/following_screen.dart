@@ -1,26 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
-import 'package:eindwerk_lite/components/custom_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+import '../components/custom_card.dart';
+
+class FollowingScreen extends StatefulWidget {
+  const FollowingScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<FollowingScreen> createState() => _FollowingScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
-  CollectionReference workouts = FirebaseFirestore.instance.collection('workouts');
+class _FollowingScreenState extends State<FollowingScreen> {
+  // CollectionReference workouts = FirebaseFirestore.instance.collection('users').doc();
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  String userId = FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference<Map<String, dynamic>> favoriteWorkouts = FirebaseFirestore.instance.collection('users').doc(userId).collection('workouts');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Following workouts'),
       ),
       body: StreamBuilder(
-        stream: workouts.snapshots(),
+        stream: favoriteWorkouts.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
             return const Text('Loading...');
@@ -49,7 +54,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavigation(selectedPage: 'home'),
+      bottomNavigationBar: const BottomNavigation(selectedPage: 'favorite'),
     );
   }
 }

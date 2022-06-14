@@ -1,6 +1,7 @@
 import 'package:eindwerk_lite/arguments.dart';
 import 'package:eindwerk_lite/check_autherisation.dart';
 import 'package:eindwerk_lite/components/bottom_navigation.dart';
+import 'package:eindwerk_lite/screens/following_screen.dart';
 import 'package:eindwerk_lite/screens/forgot_screen.dart';
 import 'package:eindwerk_lite/screens/home_screen.dart';
 import 'package:eindwerk_lite/screens/login_screen.dart';
@@ -29,9 +30,11 @@ class RouteGenerator {
           builder: (context) {
             WorkoutArguments arguments = args as WorkoutArguments;
             return WorkoutScreen(
+              id: arguments.workoutId,
               title: arguments.workoutTitle,
               description: arguments.workoutDescription,
               image: arguments.workoutImage,
+              exercises: arguments.workoutExercises,
             );
           },
         );
@@ -39,6 +42,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const CheckAutherisation());
       case '/forgot':
         return MaterialPageRoute(builder: (context) => const ForgotPasswordScreen());
+      case '/following':
+        return MaterialPageRoute(builder: (context) => const FollowingScreen());
       default:
         return _errorRoute();
     }

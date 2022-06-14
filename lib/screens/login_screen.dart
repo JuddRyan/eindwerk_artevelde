@@ -9,6 +9,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // Variables for constant text. Preferably added to  a separate file.
   String tEmail = 'E-mail', tPassword = 'Password', tAccount = 'Don\'t have an account yet?';
 
   // Input field controllers
@@ -24,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
       email: _emailController.text.trim(),
       password: _passwordController.text.trim(),
     );
-
     Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
   }
 
@@ -42,7 +42,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          // color: Color(0xFFAABBCC),
           height: double.infinity,
           width: double.infinity,
           margin: const EdgeInsets.symmetric(horizontal: 40),
@@ -85,9 +84,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
                 child: const Text('Forgot password?'),
               ),
-              // const SizedBox(
-              //   height: 40,
-              // ),
               ElevatedButton(
                 onPressed: signIn,
                 child: const Text('Sign In'),

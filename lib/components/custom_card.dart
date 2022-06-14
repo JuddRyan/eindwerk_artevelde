@@ -4,18 +4,21 @@ import 'package:flutter/material.dart';
 class SimpleCard extends StatelessWidget {
   const SimpleCard({
     Key? key,
-    @required this.title,
-    @required this.image,
-    @required this.description,
+    required this.id,
+    required this.title,
+    required this.image,
+    required this.description,
+    this.exercises,
     this.route,
     this.onTap,
     this.margin,
   }) : super(key: key);
 
   final Function? onTap;
-  final String? image, title, description;
+  final String image, title, description, id;
   final String? route;
   final double? margin;
+  final List? exercises;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +30,12 @@ class SimpleCard extends StatelessWidget {
             context,
             route.toString().toLowerCase(),
             arguments: WorkoutArguments(
+              id.toString(),
               title.toString(),
               description.toString(),
               image.toString(),
+              // added null check to prevent null pointer exception
+              exercises!,
             ),
           );
         }
@@ -46,6 +52,7 @@ class SimpleCard extends StatelessWidget {
                 ),
                 image: DecorationImage(
                   // image: AssetImage("assets/images/placeholder.png"),
+                  // load an image from the web
                   image: NetworkImage(image.toString()),
                   fit: BoxFit.cover,
                 ),
